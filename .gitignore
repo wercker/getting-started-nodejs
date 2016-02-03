@@ -1,2 +1,6 @@
 .wercker
 node_modules
+_builds/
+_cache/
+_projects/
+_steps/
