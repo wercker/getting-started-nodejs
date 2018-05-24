@@ -34,14 +34,19 @@ register:
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
-        tag: 1.0
-        cmd: "startup.sh"
+        cmd: "/bin/sh /pipeline/source/startup.sh"
         ports: "8080"
         repository: tkote/nodejs-demo
         registry: https://registry.hub.docker.com/v2 # redirect not supported!!
 # deploy to k8s custer
 deploy:
     steps:
+      - wercker/kubectl:
+          debug: true
+          server: $KUBERNETES_MASTER
+          token: $KUBERNETES_TOKEN
+          insecure-skip-tls-verify: true
+          command: delete deployment nodejs-demo -n demo --ignore-not-found
       - wercker/kubectl:
           debug: true
           server: $KUBERNETES_MASTER

@@ -1,4 +1,4 @@
 #!/bin/bash
-pwd
+cd /pipeline/source
 ls -l
 node app.js

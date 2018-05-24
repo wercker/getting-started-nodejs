@@ -18,6 +18,7 @@ spec:
       containers:
       - name: nodejs-demo
         image: tkote/nodejs-demo:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
@@ -34,4 +35,4 @@ spec:
   - port: 8080
     targetPort: 8080
   selector:
-    name: nodejs-demo
+    app: nodejs-demo
