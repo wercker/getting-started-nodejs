@@ -46,4 +46,4 @@ deploy:
           server: $KUBERNETES_MASTER
           token: $KUBERNETES_TOKEN
           insecure-skip-tls-verify: true
-          command: create -f nodejs-demo-deployment.yaml
+          command: apply -f nodejs-demo-deployment.yaml
