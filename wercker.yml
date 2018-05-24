@@ -34,7 +34,7 @@ register:
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
-        cmd: "node /pipeline/source/app.js"
+        cmd: "/bin/sh /pipeline/source/startup.sh"
         ports: "8080"
         repository: tkote/nodejs-demo
         registry: https://registry.hub.docker.com/v2 # redirect not supported!!
