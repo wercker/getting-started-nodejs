@@ -37,7 +37,7 @@ register:
         tag: 1.0
         entrypoint: "node app.js"
         repository: tkote/nodejs-demo
-        registry: https://registry.hub.docker.com/v1/repositories # redirect not supported!!
+        registry: https://registry.hub.docker.com/v2 # redirect not supported!!
 # deploy to k8s custer
 deploy:
     steps:
