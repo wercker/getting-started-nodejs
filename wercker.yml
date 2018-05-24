@@ -46,4 +46,10 @@ deploy:
           server: $KUBERNETES_MASTER
           token: $KUBERNETES_TOKEN
           insecure-skip-tls-verify: true
+          command: delete deployment nodejs-demo -n demo
+      - wercker/kubectl:
+          debug: true
+          server: $KUBERNETES_MASTER
+          token: $KUBERNETES_TOKEN
+          insecure-skip-tls-verify: true
           command: apply -f nodejs-demo-deployment.yaml
