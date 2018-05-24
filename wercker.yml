@@ -42,6 +42,7 @@ register:
 deploy:
     steps:
       - wercker/kubectl:
+          debug: true
           server: $KUBERNETES_MASTER
           token: $KUBERNETES_TOKEN
           insecure-skip-tls-verify: true
