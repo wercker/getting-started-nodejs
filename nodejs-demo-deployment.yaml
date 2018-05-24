@@ -4,6 +4,7 @@ metadata:
   name: nodejs-demo
   labels:
     app: nodejs-demo
+  namespace: demo
 spec:
   replicas: 2
   selector:
@@ -26,6 +27,7 @@ metadata:
   name: nodejs-demo-svc
   labels:
     app: nodejs-demo
+  namespace: demo
 spec:
   type: LoadBalancer
   ports:
