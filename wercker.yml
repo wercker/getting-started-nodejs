@@ -41,7 +41,8 @@ register:
 # deploy to k8s custer
 deploy:
     steps:
-      - kubectl:
+      - wercker/kubectl:
+          debug: true
           server: $KUBERNETES_MASTER
           token: $KUBERNETES_TOKEN
           insecure-skip-tls-verify: true
