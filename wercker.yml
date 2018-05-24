@@ -35,9 +35,9 @@ register:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         tag: 1.0
-        cmd: node app.js
+        entrypoint: "node app.js"
         repository: tkote/nodejs-demo
-        registry: https://registry.hub.docker.com
+        registry: https://registry.hub.docker.com/v1/repositories # redirect not supported!!
 # deploy to k8s custer
 deploy:
     steps:
