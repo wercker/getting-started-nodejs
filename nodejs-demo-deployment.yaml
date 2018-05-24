@@ -35,4 +35,4 @@ spec:
   - port: 8080
     targetPort: 8080
   selector:
-    name: nodejs-demo
+    app: nodejs-demo
