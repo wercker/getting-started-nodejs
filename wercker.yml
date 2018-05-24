@@ -36,6 +36,7 @@ register:
         password: $DOCKER_PASSWORD
         tag: 1.0
         cmd: "startup.sh"
+        ports: "8080"
         repository: tkote/nodejs-demo
         registry: https://registry.hub.docker.com/v2 # redirect not supported!!
 # deploy to k8s custer
