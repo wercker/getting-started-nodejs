@@ -29,15 +29,15 @@ build:
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
 # push to docker resitry
-register:
+docker-push:
   steps:
     - internal/docker-push:
+        registry: $DOCKER_RESISTRY # https://registry.hub.docker.com/v2 # redirect not supported!!
+        repository: $DOCKER_REPOSITORY # tkote/nodejs-demo
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         cmd: "/bin/sh /pipeline/source/startup.sh"
         ports: "8080"
-        repository: tkote/nodejs-demo
-        registry: https://registry.hub.docker.com/v2 # redirect not supported!!
 # deploy to k8s custer
 deploy:
     steps:
