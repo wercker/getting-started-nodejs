@@ -28,6 +28,11 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: dev
+        username: werckerbot
 # push to docker resitry
 docker-push:
   steps:
@@ -53,3 +58,8 @@ deploy:
           token: $KUBERNETES_TOKEN
           insecure-skip-tls-verify: true
           command: apply -f nodejs-demo-deployment.yaml
+    after-steps:
+      - slack-notifier:
+          url: $SLACK_URL
+          channel: dev
+          username: werckerbot
