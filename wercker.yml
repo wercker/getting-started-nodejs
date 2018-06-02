@@ -43,6 +43,16 @@ docker-push:
         password: $DOCKER_PASSWORD
         cmd: "/bin/sh /pipeline/source/startup.sh"
         ports: "8080"
+# push to docker resitry 
+docker-scratch-push:
+  steps:
+    - internal/docker-scratch/push:
+        registry: $DOCKER_RESISTRY # https://registry.hub.docker.com/v2 # redirect not supported!!
+        repository: $DOCKER_REPOSITORY # tkote/nodejs-demo
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        cmd: "node app.js"
+        ports: "8080"
 # deploy to k8s custer
 deploy:
     steps:
