@@ -1,8 +1,7 @@
-box: 
+box:
   id: node:latest
-  ports: 
+  ports:
     - "8080"
-    
 dev:
   steps:
     - npm-install
@@ -43,7 +42,12 @@ docker-push:
         password: $DOCKER_PASSWORD
         cmd: "/bin/sh /pipeline/source/startup.sh"
         ports: "8080"
-# push to docker resitry 
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: dev
+        username: werckerbot
+# push to docker resitry
 docker-scratch-push:
   steps:
     - internal/docker-scratch/push:
@@ -53,6 +57,11 @@ docker-scratch-push:
         password: $DOCKER_PASSWORD
         cmd: "node app.js"
         ports: "8080"
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: dev
+        username: werckerbot
 # deploy to k8s custer
 deploy:
     steps:
@@ -67,7 +76,7 @@ deploy:
           server: $KUBERNETES_MASTER
           token: $KUBERNETES_TOKEN
           insecure-skip-tls-verify: true
-          command: apply -f nodejs-demo-deployment.yaml
+          command: apply -f $KUBERNETES_DEPLOYMENT
     after-steps:
       - slack-notifier:
           url: $SLACK_URL
