@@ -1,0 +1,10 @@
+linters:
+    flake8:
+    eslint:
+        config: './eslint.config'
+    csslint:
+
+files:
+  ignore:
+    - 'bower_components/*'
+    - 'node_modules/*'
